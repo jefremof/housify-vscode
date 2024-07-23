@@ -1,0 +1,25 @@
+{
+  "name": "housify-lang-vscode",
+  "displayName": "housify-lang-vscode",
+  "description": "Housify language (.hsf) support for Visual Studio Code",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.91.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "housify",
+      "aliases": ["Housify", "housify"],
+      "extensions": [".hsf"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "housify",
+      "scopeName": "source.hsf",
+      "path": "./syntaxes/housify.tmLanguage.json"
+    }]
+  }
+}

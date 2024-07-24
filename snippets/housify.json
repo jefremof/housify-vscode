@@ -1,0 +1,22 @@
+{
+	".source.housify": {
+		"house declaration": {
+			"prefix": "house",
+			"body": "house ${1:Name} {\n\t$0\n}",
+			"description": "A template for house."
+		},
+		"handler declaration": {
+			"prefix": "handle",
+			"body": "handle ${1:Name} {\n\t$0\n}",
+			"description": "A template for handler."
+		},
+		"if statement": {
+			"prefix": "if",
+			"body": "if (${1:condition}) {\n\t$0\n}"
+		},
+		"if else statement": {
+			"prefix": "if-else",
+			"body": "if (${1:condition}) {\n\t$2\n} else {\n\t$0\n}"
+		}
+	}
+}

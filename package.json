@@ -7,19 +7,45 @@
     "vscode": "^1.91.0"
   },
   "categories": [
-    "Programming Languages"
+    "Programming Languages",
+    "Snippets"
   ],
+  "main": "./dist/extension.js",
   "contributes": {
-    "languages": [{
-      "id": "housify",
-      "aliases": ["Housify", "housify"],
-      "extensions": [".hsf"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "housify",
-      "scopeName": "source.hsf",
-      "path": "./syntaxes/housify.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "housify",
+        "aliases": [
+          "Housify",
+          "housify"
+        ],
+        "extensions": [
+          ".hsf"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "housify",
+        "scopeName": "source.hsf",
+        "path": "./syntaxes/housify.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "housify",
+        "path": "./snippets/housify.json"
+      }
+    ]
+  },
+  "dependencies": {
+    "typescript": "^5.5.4",
+    "vscode": "^1.1.37"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
   }
 }

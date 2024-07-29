@@ -59,7 +59,16 @@
                 },
 				{
                     "comment": "Stats modifiers",
-                    "match": "(global|player)(?!\\.)",
+                    "match": "\b(global|player)\b(?!\\.)",
+                    "captures": {
+                        "0": {
+                            "name": "storage.modifier.housify"
+                        }
+                    }
+                },
+				{
+                    "comment": "Variable modifiers",
+                    "match": "\b(const)\b",
                     "captures": {
                         "0": {
                             "name": "storage.modifier.housify"
@@ -193,8 +202,20 @@
                     }
                 },
                 {
-                    "comment": "Any valid Housify identifier",
-                    "match": "\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
+                    "comment": "Any valid Housify identifier with const modifier",
+                    "match": "\\b(const\\s+)\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
+                    "captures": {
+                        "0": {
+                            "name": "storage.modifier.housify"
+                        },
+                        "1": {
+                            "name": "variable.other.constant.housify"
+                        }
+                    }
+                },
+                {
+                    "comment": "Any valid Housify identifier without const modifier",
+                    "match": "(?<!\\bconst\\s+)\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
                     "name": "variable.other.housify"
                 }
             ]

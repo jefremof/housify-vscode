@@ -11,6 +11,9 @@
         {
             "include": "#house"
         },
+        {
+            "include": "#const"
+        },
 		{
 			"include": "#keywords"
 		},
@@ -59,7 +62,7 @@
                 },
 				{
                     "comment": "Stats modifiers",
-                    "match": "\b(global|player)\b(?!\\.)",
+                    "match": "\\b(global|player)\\b(?!\\.)",
                     "captures": {
                         "0": {
                             "name": "storage.modifier.housify"
@@ -68,12 +71,8 @@
                 },
 				{
                     "comment": "Variable modifiers",
-                    "match": "\b(const)\b",
-                    "captures": {
-                        "0": {
-                            "name": "storage.modifier.housify"
-                        }
-                    }
+                    "match": "\\b(const)\\b",
+                    "name": "storage.modifier.housify"
                 }
 			]
 		},
@@ -187,11 +186,27 @@
             "match": "\\b(int|bool)\\b",
             "name": "entity.name.type.housify"
         },
+        "const": {
+            "patterns": [
+                {
+                    "comment": "Any valid Housify identifier with const modifier",
+                    "match": "\\b(const)\\s+\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
+                    "captures": {
+                        "1": {
+                            "name": "storage.modifier.housify"
+                        },
+                        "2": {
+                            "name": "variable.other.constant.housify"
+                        }
+                    }
+                }
+            ]
+        },
         "variable": {
             "patterns": [
                 {
                     "comment": "Reserved language variables",
-                    "match": "\\b(global|player)(?=\\.)",
+                    "match": "\\b(global|player)\\b(?=\\.)",
                     "captures": {
                         "0": {
                             "name": "variable.language.housify"
@@ -202,21 +217,13 @@
                     }
                 },
                 {
-                    "comment": "Any valid Housify identifier with const modifier",
-                    "match": "\\b(const\\s+)\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
-                    "captures": {
-                        "0": {
-                            "name": "storage.modifier.housify"
-                        },
-                        "1": {
-                            "name": "variable.other.constant.housify"
-                        }
-                    }
-                },
-                {
                     "comment": "Any valid Housify identifier without const modifier",
                     "match": "(?<!\\bconst\\s+)\\b([a-zA-Z][a-zA-Z0-9]*)\\b",
-                    "name": "variable.other.housify"
+                    "captures": {
+                        "0": {
+                            "name": "variable.other.housify"
+                        }
+                    }
                 }
             ]
         },
